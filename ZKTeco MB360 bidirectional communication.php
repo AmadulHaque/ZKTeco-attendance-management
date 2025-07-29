@@ -1,5 +1,3 @@
-<?php
-
 /**
  * 
  *  Method 1: Using MB360's Built-in HTTP Callback
