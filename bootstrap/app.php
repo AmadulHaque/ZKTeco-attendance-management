@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->append(BlockCrawlerMiddleware::class);
+        // $middleware->append(BlockCrawlerMiddleware::class);
 
     })
     ->withExceptions(function (Exceptions $exceptions): void {
