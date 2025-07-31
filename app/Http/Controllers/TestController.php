@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Rats\Zkteco\Lib\ZKTeco;
-
 use Illuminate\Http\Request;
-use App\Services\ZKTeco\MB360Service;
-
+use Laradevsbd\Zkteco\Http\Library\ZktecoLib;
+ 
 class TestController extends Controller
 {
-    public function __construct(
-        // protected MB360Service $mb360Service
-    )
-    {
-    }
+ 
 
     public function cdata(Request $request)
     {
@@ -23,7 +17,7 @@ class TestController extends Controller
             'data' => $request->all()
         ]);
 
-       return response()->noContent();
+       return response()->json([],200);
 
     }
 
@@ -31,9 +25,15 @@ class TestController extends Controller
 
     public function test()
     {
-        try {
-           
-          
+
+        $zk = new ZktecoLib('192.168.10.23');
+
+        $zk->connect();
+
+        dd( 
+            $zk->getAttendance(),
+            $zk->getUser(),
+        );
 
 
 
@@ -41,9 +41,7 @@ class TestController extends Controller
 
 
 
-        } catch (\Throwable $th) {
-            dd($th);
-        }
+
     }
 
 
